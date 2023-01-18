@@ -1,0 +1,1 @@
+{"request_id":"1673784784,7a31aed5-ffba-44ee-8b44-42e5dc3858cc","time_used":323,"faces":[{"face_token":"ba8c33e1dec8a0440c7e6fd9a24736a4","face_rectangle":{"top":862,"left":1077,"width":206,"height":206}}],"image_id":"sQV/haCesbU2ThlfMENZ/A==","face_num":1}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\aagam\source\repos\deployment gtk c gui\gyk_c_gui_experimental_deployment\gtk_c_gui\</FILEPATH>
+      <FILENAME>gtk_dashboard_gui.c</FILENAME>
+      <LINE>190</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6067</DEFECTCODE>
+    <DESCRIPTION>_Param_(2) in call to 'printf' must be the address of a string. Actual type: 'char **'.</DESCRIPTION>
+    <FUNCTION>on_clicking_ok_for_create_classroom_query</FUNCTION>
+    <DECORATED>on_clicking_ok_for_create_classroom_query</DECORATED>
+    <FUNCLINE>142</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

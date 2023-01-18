@@ -1,0 +1,5 @@
+C:\Users\aagam\source\repos\gtk_c_gui\gtk_c_gui\x64\Debug\gtk_c_gui.vcxproj.CopyComplete
+C:\Users\aagam\source\repos\deployment gtk c gui\gyk_c_gui_experimental_deployment\gtk_c_gui\x64\Debug\gtk_c_gui.vcxproj.CopyComplete
+C:\Users\aagam\source\repos\deployment gtk c gui\Can You C\gtk_c_gui\x64\Debug\gtk_c_gui.vcxproj.CopyComplete
+D:\Can You C\gtk_c_gui\x64\Debug\gtk_c_gui.vcxproj.CopyComplete
+D:\Organize-IT!\gtk_c_gui\x64\Debug\gtk_c_gui.vcxproj.CopyComplete
