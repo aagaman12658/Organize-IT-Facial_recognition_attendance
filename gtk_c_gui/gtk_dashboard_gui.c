@@ -1,20 +1,40 @@
+/* ========================================================================= */
+/**
+ * @file gtk_dashboard_gui.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup gtk_dashboard_gui gtk_dashboard_gui.c
+ * This is the dashboard window where users will be able to acess different functionalities of the program.
+ * @{
+ */
+
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+
+//c libraries
 #include<gtk-4.0/gtk/gtk.h>
 #include<curl/curl.h>
 #include<stdio.h>
 #include<glib/gstdio.h>
+#include <jansson.h>
+
+//user created headers
 #include "gtk_c_gui.h"
 #include "gtk_dashboard_gui.h"
 #include "attendance_window_public.h"
 #include "ErrorMessages.h"
 #include "LOGIN_NORMAL.h"
-#include <jansson.h>
 #include "post_basic_file_to_database.h"
 
 
-
-
-
-
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 //function declaration/function prototypes
 void activate_dashboard_window(char* email_sent_by_main_file);
 void activate_profile_window();
@@ -36,6 +56,10 @@ static void activate_entry_for_no_of_students();
 int convert_to_int();
 static void activate_entry_for_classname();
 
+
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
 
 
 //global variables for dashboard
@@ -70,6 +94,10 @@ static void activate_entry_for_classname() {
 
 
 //converts no of students to integer as it is initially entered as char*
+/*! \fn     int convert_to_int()
+    \brief  converts no of students to integer as it is initially entered as char*
+    \param number_of_students -> saves the number of students in a classroom created by user in integer format
+*/
 int convert_to_int(){
   
     int number_int; // Number as an integer
@@ -83,6 +111,10 @@ int convert_to_int(){
 }
 
 //This function is called by activate_query_window() funcion to take no_of_students as input
+/*! \fn     static void activate_entry_for_no_of_students()
+    \brief  This function is called by activate_query_window() funcion to take no_of_students as input
+    \param no_of_students -> saves the number of students in a classroom created by user in char* format
+*/
 static void activate_entry_for_no_of_students() {
     no_of_students = (char*)gtk_editable_get_text(GTK_EDITABLE(entry2));
     printf("no of students %s", no_of_students);
@@ -97,6 +129,9 @@ void activate_print_window() {
 
 
 // This function is created to create a "Json Payload" which will be delivered to firebase realtime database
+/*! \fn     void add_metadata_to_main_json(json_t* root)
+    \brief  This function is created to create a "Json Payload" which will be delivered to firebase realtime database
+*/
 void add_metadata_to_main_json(json_t* root) {
     json_object_set_new(root, "Email", json_string(email_to_be_sent_back_to_db));
     json_object_set_new(root, "Number_of_classrooms", json_integer(number_of_classroom_created_by_user));
@@ -113,6 +148,10 @@ void add_metadata_to_main_json(json_t* root) {
 // uri looks like this : file:///C:/Users/user/folder/json_draft.txt
 //local path looks like this : C:\Users\user\folder\json_draft.txt 
 // This function is called by : on_response_for_txt_file(GtkNativeDialog* native, int response) function
+
+/*! \fn     void add_metadata_to_main_json(json_t* root)
+    \brief   This function is create to convert uri extracted by g_file_get_uri() to local path. Uri looks like this : file:///C:/Users/user/folder/json_draft.txt . Local path looks like this : C:\Users\user\folder\json_draft.txt.
+*/
 int change_uri_to_localpath_for_txt_file(gchar* file_uri) {
     // Get the file URI
 
@@ -137,6 +176,10 @@ int change_uri_to_localpath_for_txt_file(gchar* file_uri) {
 
 
 //opens actual attendance window for taking attendance 
+
+/*! \fn     void open_actual_attendance_window(GtkWidget* button)
+    \brief   opens actual attendance window for taking attendance
+*/
 void open_actual_attendance_window(GtkWidget* button) {
     char* label = gtk_button_get_label(GTK_BUTTON(button));
     printf("\n\n\n\n\n\n\n\n\n\nuser_email= %s\n\n\n\n\n\n\n\n\n\n", user_email);
@@ -146,6 +189,10 @@ void open_actual_attendance_window(GtkWidget* button) {
 
 //creates new buttons for new classroom when user creates new classroom
 //also keeps track of the no of classroom created by user and creates the classroom whenever the user logs into the account
+
+/*! \fn    void on_clicking_create_classroom()
+    \brief   Creates new buttons for new classroom when user creates new classroom. Also keeps track of the no of classroom created by user and creates the classroom whenever the user logs into the account
+*/
 void on_clicking_create_classroom() {
      
      
@@ -159,6 +206,9 @@ void on_clicking_create_classroom() {
 
 
 //saves basic details of the user to realtime database provided by firebase
+/*! \fn    void save_basic_details()
+    \brief  saves basic details of the user to realtime database provided by firebase. Basic details include: user email, no of classrooms created, current class status, unique_id of classroom if any classroom is created.
+*/
 void save_basic_details() {
     json_t* root = json_object();
     add_metadata_to_main_json(root);
@@ -169,6 +219,9 @@ void save_basic_details() {
 }
 
 //describes the behavior of program on clicking create classroom query
+/*! \fn    void on_clicking_ok_for_create_classroom_query()
+    \brief Describes the behavior of program on clicking create classroom query.
+*/
 void on_clicking_ok_for_create_classroom_query() {
     
     GtkWidget* window6;
@@ -230,22 +283,34 @@ void on_clicking_ok_for_create_classroom_query() {
 
 
 //opens parent window when window2 is closed
+/*! \fn    void open_parent1()
+    \brief opens parent window when window2 is closed
+*/
 void open_parent1() {
     gtk_widget_set_visible(window, true);
 }
 
 //opens parent window2 when window3 is closed
+/*! \fn    void open_parent2()
+    \brief opens parent window2 when window3 is closed
+*/
 void open_parent2() {
     gtk_widget_set_visible(window2, true);
 }
 
 //opens parent window3 when child window is closed
+/*! \fn    void open_parent3()
+    \brief opens parent window3 when child is closed
+*/
 void open_parent3() {
     gtk_widget_set_visible(window3, true);
 }
 
 
 //For testing purpose
+/*! \fn    static void action_clbk(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, G_GNUC_UNUSED gpointer* data)
+    \brief For testing button press event
+*/
 static void action_clbk(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, G_GNUC_UNUSED gpointer* data)
 {
     g_print("The action %s was clicked.\n", g_action_get_name(G_ACTION(simple_action)));
@@ -253,6 +318,9 @@ static void action_clbk(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* pa
 
 
 //is executed when dilog box is opened for taking the txt file input
+/*! \fn   void on_response_for_txt_file(GtkNativeDialog* native, int response)
+    \brief This function is executed when dialog box is opened for taking the txt file input. This function takes the uri of text file from user and passes it to another function to turn it into local path.
+*/
 void on_response_for_txt_file(GtkNativeDialog* native, int response) {
     if (response == GTK_RESPONSE_ACCEPT)
     {
@@ -277,6 +345,9 @@ void on_response_for_txt_file(GtkNativeDialog* native, int response) {
 
 
 //opens dialog box for taking txt file as input
+/*! \fn  static void action_clbk_for_txt_file(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
+    \brief Opens dialog box for taking txt file as input.
+*/
 static void action_clbk_for_txt_file(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
 {
     //for Opening File Chooser Dialog
@@ -297,6 +368,9 @@ static void action_clbk_for_txt_file(GSimpleAction* simple_action, G_GNUC_UNUSED
 
 
 //activates query window for taking details of the classroom to be created
+/*! \fn  void activate_query_window()
+    \brief Activates query window for taking details of the classroom to be created.
+*/
 void activate_query_window() {
 
     GtkWidget* button;
@@ -418,11 +492,17 @@ void activate_query_window() {
 }
 
 //opens demo attendance window
+/*! \fn  void open_attendance_window() 
+    \brief Opens demo attendance window.
+*/
 void open_attendance_window() {
     activate_attendance_window_for_taking_attendance_demo(user_email);
 }
 
 //activates attendance window where the classrooms created by the user are present 
+/*! \fn  static void activate_attendance_window( )
+    \brief activates attendance window where the classrooms created by the user are present.
+*/
 static void activate_attendance_window( ) {
    
     GtkWidget* scrolledwindow;
@@ -495,6 +575,9 @@ static void activate_attendance_window( ) {
 }
 
 //activates the profile window   <<<<<---under construction----->>>>>
+/*! \fn  void activate_profile_window()
+    \brief activates the profile window   <<<<<---under construction----->>>>>
+*/
 void activate_profile_window() {
     GtkWidget* label;
     GtkWidget* grid;
@@ -515,6 +598,9 @@ void activate_profile_window() {
 }
 
 //activates dashboard for the user from where user can enter different windows
+/*! \fn  void activate_dashboard_window(char* email_sent_by_main_file)
+    \brief activates dashboard for the user from where user can enter different windows
+*/
 void activate_dashboard_window(char* email_sent_by_main_file) {
    
 
@@ -656,3 +742,5 @@ void activate_dashboard_window(char* email_sent_by_main_file) {
     g_object_unref(attendance_menu);
     g_object_unref(menu_bar);
 }
+
+/** @} */

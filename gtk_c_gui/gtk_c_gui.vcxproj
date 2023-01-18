@@ -159,7 +159,7 @@
     <ResourceCompile Include="gtk_c_gui_experimental.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="D:\new backup for can you c\deployment gtk c gui\gyk_c_gui_experimental_deployment\New folder\Organize-It-logo.png" />
+    <Image Include="..\x64\Debug\Organize-It-logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -81,7 +81,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="D:\new backup for can you c\deployment gtk c gui\gyk_c_gui_experimental_deployment\New folder\Organize-It-logo.png">
+    <Image Include="..\x64\Debug\Organize-It-logo.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

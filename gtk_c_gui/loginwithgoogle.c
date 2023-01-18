@@ -1,19 +1,59 @@
+/* ========================================================================= */
+/**
+ * @file loginwithgoogle.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup loginwithgoogle loginwithgoogle.c
+ * This file contains featues that allows users to login via the google account already logged in, in their browser
+ * @{
+ */
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+//library headers
 #include <windows.h>
-#include "loginwithgoogle.h"
+#include <gtk-4.0/gtk/gtk.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include<curl/curl.h>
 #include <jansson.h>
+//custom headers created by programmer
 #include"gtk_c_gui.h"
+#include "loginwithgoogle.h"
 #include"gtk_dashboard_gui.h"
-#include <gtk-4.0/gtk/gtk.h>
 
 
 
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
 int choice;
 #define BUFSIZE 1024
 int j = 1;
 LPTSTR lptstr = (LPTSTR)"sample";
+GtkWidget* window2;
+
+
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
+int login_with_google();
+gboolean start_login();
+int extract_and_print_code();
+int request_for_access_token(char* code);
+int change_id_token_with_info(char* idtoken);	
+static size_t write_data(void* prt, size_t size, size_t nmemb, void* stream);
+void waiting_window_for_login_with_google();
+void change_value_for_choice();
+
+
+/*! \fn    void change_value_for_choice() 
+    \brief Changes choice variable to zero which is used to control the infinite loop.
+*/
 
 void change_value_for_choice() {
     choice = 0;
@@ -21,8 +61,12 @@ void change_value_for_choice() {
 
 
 //initiates waiting window for login_with_google
+/*! \fn    void waiting_window_for_login_with_google()
+    \brief Initiates waiting window for login_with_google.
+*/
+
 void waiting_window_for_login_with_google() {
-    GtkWidget* window2;
+   
     GtkWidget* title;
     GtkWidget* grid;
     PangoFontDescription* font_desc;
@@ -64,6 +108,9 @@ void waiting_window_for_login_with_google() {
 }
 
 //write response sent by api to file
+/*! \fn     static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
+    \brief  Writes the response sent by api to a file
+*/
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 {
     size_t written = fwrite(ptr, size, nmemb, (FILE*)stream);
@@ -72,6 +119,10 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 
 
 //exchanges id_token with user info
+
+/*! \fn    int change_id_token_with_info(char* idtoken)
+    \brief  Exchanges id_token with user info
+*/
 int change_id_token_with_info(char* idtoken)
 {
     CURL* curl;
@@ -139,6 +190,7 @@ int change_id_token_with_info(char* idtoken)
     const char* is_email_verified = json_is_true(json_object_get(root, "email_verified"));
     printf("%i", is_email_verified);
     if (is_email_verified == 0) {
+        gtk_window_destroy(window2);
         activate_dashboard_window(email);
     }
     else
@@ -150,6 +202,10 @@ int change_id_token_with_info(char* idtoken)
 
 
 //requeqst for access token 
+
+/*! \fn   int request_for_access_token(char* code)
+    \brief Requeqsts rest api endpoint for access token 
+*/
 int request_for_access_token(char* code) {
 
     FILE* fp = fopen("outfileforaccesstoken.txt", "wb+");
@@ -228,7 +284,10 @@ void print_code(char* code) {
 }
 
 
-//extracts and prints code// only useful for devs to check whether the code is working properly or not
+//extracts and prints codeonly useful for devs to check whether the code is working properly or not
+/*! \fn   int extract_and_print_code()
+    \brief extracts and prints code, print code statement only useful for devs to check whether the code is working properly or not
+*/
 int extract_and_print_code(){
 
  
@@ -258,7 +317,9 @@ int extract_and_print_code(){
     return 0;
 }
 
-
+/*! \fn   gboolean start_login()
+    \brief starts login_with_google with a certain amount of timeout so that the infinite loop doesnot freeze the program from executing
+*/
 
 gboolean start_login() {
     g_idle_add((GSourceFunc)login_with_google, NULL);
@@ -268,6 +329,9 @@ gboolean start_login() {
 
 
 //initiates logging in process using google and tires to copy the url to clipboard
+/*! \fn  int login_with_google()
+    \brief Initiates logging in process using google and tires to copy the url to clipboard
+*/
 int login_with_google()
 {
     choice = 1;
@@ -376,3 +440,5 @@ LABEL:
 
     
 }
+
+/** @} */

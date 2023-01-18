@@ -1,7 +1,26 @@
+/* ========================================================================= */
+/**
+ * @file post__basic_file_to_database.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup post__basic_file_to_database post__basic_file_to_database.c
+ * This file contains all the functions that will be posting or fetching data to and fromt the database
+ * @{
+ */
+
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
 #include <stdio.h>
 #include <curl/curl.h>
-#include "gtk_c_gui.h"
 #include <jansson.h>
+
+//user created headers
+#include "gtk_c_gui.h"
 #include "post_basic_file_to_database.h"
 #include "gtk_dashboard_gui.h"
 
@@ -13,8 +32,9 @@ struct MemoryStruct {
 };
 
 
-
-
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 
 //function declaration
 static size_t WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void* userp);
@@ -30,6 +50,12 @@ char* get_classname_only_from_resource_json(char* email, char* unique_id);
 int post_basic_file_to_database(char* json_data, char* email);
 int update_resource_file_in_database(char* json_data, char* email, char* unique_identifier_for_each_class);
 
+
+
+
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
 //global variables not to be changed manually
 char json_file_name[20];
 
@@ -43,6 +69,9 @@ char json_file_name[20];
 
 
 //writes json response to a variable
+/*! \fn     static size_t WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void* userp)
+    \brief  Writes the response sent by api to a variable
+*/
 static size_t WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
     size_t realsize = size * nmemb;
@@ -65,6 +94,9 @@ static size_t WriteMemoryCallback(void* contents, size_t size, size_t nmemb, voi
 
 
 //write json response to a file
+/*! \fn     static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
+    \brief  Writes the response sent by api to a file
+*/
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 {
     size_t written = fwrite(ptr, size, nmemb, (FILE*)stream);
@@ -72,6 +104,9 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 }
 
 //gets the part infront of @ in an email address so it can be saved as unique id for each user in database
+/*! \fn     void get_the_part_of_email_before_service_provider_name(char* email)
+    \brief  Gets the part infront of @ in an email address so it can be saved as unique id for each user in database
+*/
 void get_the_part_of_email_before_service_provider_name(char* email) {
     char* token =strtok(email, "@");
     strcpy(json_file_name, token);
@@ -80,6 +115,10 @@ void get_the_part_of_email_before_service_provider_name(char* email) {
 
 //<<<<<<<<<<<<<<<<<<<<<------------------under construction--------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>
 //but still it deletes something which is still not decided from the database
+
+/*! \fn     void delete_data_previously_present_in_main_json_in_database(char* email)
+    \brief  <<<<<<<<<<<<<<<<<<<<<------------------under construction--------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>but still it deletes something from the database which is still not decided
+*/
 void delete_data_previously_present_in_main_json_in_database(char* email) {
     CURL* curl;
     CURLcode res;
@@ -116,6 +155,10 @@ void delete_data_previously_present_in_main_json_in_database(char* email) {
 
 
 //gets data present in main.json present for specific user as specified in the url
+
+/*! \fn    char** get_data_present_in_main_json_in_database(char* email, int* number_of_classes_created_by_user, int* class_status)
+    \brief Gets data present in main.json present for specific user as specified in the url.
+*/
 char** get_data_present_in_main_json_in_database(char* email, int* number_of_classes_created_by_user, int* class_status) {
     FILE* fp = fopen("get_main_json.txt", "wb+");
     if (!fp)
@@ -210,8 +253,12 @@ char** get_data_present_in_main_json_in_database(char* email, int* number_of_cla
 
 }
 
-//fetches teh number of students present in the database. please dont edit the studetns error present in the naming as it might interfere
+//fetches the number of students present in the database. please dont edit the studetns error present in the naming as it might interfere
 //with other file where the function is called
+
+/*! \fn    int get_number_of_studetns_in_classroom_selected(char*email,char* unique_id_for_classroom)
+    \brief Fetches the number of students present in the database. please dont edit the studetns error present in the naming as it might interfere with other file where the function is called.
+*/
 int get_number_of_studetns_in_classroom_selected(char*email,char* unique_id_for_classroom){
     int i = 0;
 
@@ -269,6 +316,9 @@ int get_number_of_studetns_in_classroom_selected(char*email,char* unique_id_for_
 }
 
 //fetches the number of days each student was present 
+/*! \fn   int* get_present_days_for_each_classroom(char* email, char* unique_id_for_classroom,int number_of_students)
+    \brief Fetches the number of days each student was present 
+*/
 int* get_present_days_for_each_classroom(char* email, char* unique_id_for_classroom,int number_of_students) {
     int i = 0;
 
@@ -350,6 +400,9 @@ int* get_present_days_for_each_classroom(char* email, char* unique_id_for_classr
 
 
 //fetches number of days the class was conducted for each classroom
+/*! \fn   int get_class_days_from_each_classroom(char* email,char* unique_id_for_classroom)
+    \brief Fetches number of days the class was conducted for each classroom
+*/
 int get_class_days_from_each_classroom(char* email,char* unique_id_for_classroom) {
     int i = 0;
 
@@ -411,6 +464,9 @@ int get_class_days_from_each_classroom(char* email,char* unique_id_for_classroom
 
 
 //gets names present in resource.json saved in the database
+/*! \fn   char* get_names_present_in_resource_json_in_database(char* email, char** unique_id, char* classname, int number_of_classroom_created_by_user) 
+    \brief Fetches names present in resource.json saved in the database
+*/
 char* get_names_present_in_resource_json_in_database(char* email, char** unique_id, char* classname, int number_of_classroom_created_by_user) {
     int i = 0;
 
@@ -497,6 +553,9 @@ char* get_names_present_in_resource_json_in_database(char* email, char** unique_
 
 
 //fetches classname only from resource.json saved in firebase realtime database
+/*! \fn   char* get_classname_only_from_resource_json(char* email, char *unique_id)
+    \brief Fetches classname only from resource.json saved in firebase realtime database
+*/
 char* get_classname_only_from_resource_json(char* email, char *unique_id) {
     FILE* fp = fopen("get_classname_from_resource_json.txt", "wb+");
     if (!fp)
@@ -583,6 +642,9 @@ char* get_classname_only_from_resource_json(char* email, char *unique_id) {
 
 
 //posts ( **using patch request so no new unique_id is created) basic file to database here basic files mean main.json
+/*! \fn   int post_basic_file_to_database(char* json_data, char*email)
+    \brief Posts basic json payload containing user email, number of classroom created by user, current class status and unique_id of classrooms if any
+*/
 int post_basic_file_to_database(char* json_data, char*email) {
 
     // Use curl to send a POST request to the realtime database with the json data
@@ -628,6 +690,9 @@ int post_basic_file_to_database(char* json_data, char*email) {
 }
 
 //posts (**using POST request so unique id is created for each classroom) resource.json to database
+/*! \fn   char* post_resource_file_to_database(char* json_data, char* email)
+    \brief Posts resource file to database containing the details of the classroom like students name, number of students 
+*/
 char* post_resource_file_to_database(char* json_data, char* email) {
     FILE* fp = fopen("postresponse.txt", "wb+");
     if (!fp)
@@ -709,6 +774,10 @@ char* post_resource_file_to_database(char* json_data, char* email) {
 
 
 //updates the resource.json present in database
+
+/*! \fn   int update_resource_file_in_database(char* json_data, char* email, char* unique_identifier_for_each_class)
+    \brief Updates the resource.json present in database
+*/
 int update_resource_file_in_database(char* json_data, char* email, char* unique_identifier_for_each_class) {
 
     // Use curl to send a POST request to the realtime database with the json data
@@ -753,3 +822,6 @@ int update_resource_file_in_database(char* json_data, char* email, char* unique_
     curl_slist_free_all(headers);
     return 0;
  }
+
+
+/** @} */

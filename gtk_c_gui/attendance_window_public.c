@@ -1,16 +1,66 @@
+/* ========================================================================= */
+/**
+ * @file attendance_window_public.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+ /** @defgroup attendance_window_public attendance_window_public.c
+  * This is the window where the teacher will actually take attendance
+  * @{
+  */
+
+
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+//standard c library headers
 #include <stdio.h>
 #include <string.h>
 #include <gtk/gtk.h>
-#include "gtk_c_gui.h"
-#include "gtk_dashboard_gui.h"
-#include "attendance_window_public.h"
 #include <glib.h>
 #include <windows.h>
 #include <jansson.h>
 #include <curl/curl.h>
+
+//user created headers
 #include "post_basic_file_to_database.h"
 #include "img_to_base64.h"
 #include "ErrorMessages.h"
+#include "gtk_c_gui.h"
+#include "gtk_dashboard_gui.h"
+#include "attendance_window_public.h"
+
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
+
+//function declarations
+int change_uri_to_localpath_for_present_photo(gchar* file_uri);
+int change_uri_to_localpath_for_reference_photo(gchar* file_uri);
+static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream);
+void facetoken_present_image();
+void facetoken_ref_image();
+float attendance();
+void remove_present_photo();
+void remove_referernce_photo();
+void remove_both_photos();
+void on_response_for_present_photo(GtkNativeDialog* native, int response);
+void on_response_for_reference_photo(GtkNativeDialog* native, int response);
+void on_response_for_reference_photo_all_at_once(GtkNativeDialog* native, int response);
+int compare_students(const void* a, const void* b);
+static void action_clbk_for_present_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data);
+static void action_clbk_for_reference_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data);
+void action_clbk_for_reference_photo_all_at_once(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data);
+char* sort_names_and_send_to_db(char* filepath_for_txt_containing_name, char* email, char* classname, int number_of_students);
+void activate_attendance_window_for_taking_attendance_demo(char* email);
+void update_db_with_updated_data();
+void increase_class_day_by_1();
+void decrease_class_day_by_1();
+int* make_all_values_minus_one();
+void activate_attendance_window_for_taking_attendance(char* email, char** unique_id, char* classname, int number_of_classroom_created_by_user);
 
 // Struct to store data for each row
 
@@ -37,6 +87,12 @@ enum {
 };
 
 
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
+
+
+//global variables
 GtkWidget* tree_view;
 GFile* file_for_present_photo, * file_for_reference_photo;
 char* uri_for_present_photo;
@@ -46,7 +102,15 @@ char* unique_id_for_classroom;
 char* email_to_pass_around;
 int number_of_students;
 GtkWidget* window5;
+//facial recognition part
+char* face_token1 = (char*)"init";
+char* face_token2 = (char*)"init";
 
+
+/*! \fn     void make_every_one_of_uri_null()
+    \brief  makes every one of the uri null
+
+*/
 void make_every_one_of_uri_null()
 {
     for (int i = 0; i < 100; i++) {
@@ -55,10 +119,11 @@ void make_every_one_of_uri_null()
 }
 
 
+/*! \fn     int change_uri_to_localpath_for_present_photo(gchar* file_uri)
+    \brief  Changes uri of present photo to local path
 
-//facial recognition part
-char* face_token1 = (char*)"init";
-char* face_token2 = (char*)"init";
+*/
+
 int change_uri_to_localpath_for_present_photo(gchar* file_uri) {
     // Get the file URI
 
@@ -80,6 +145,11 @@ int change_uri_to_localpath_for_present_photo(gchar* file_uri) {
 
     return 0;
 }
+
+/*! \fn     int change_uri_to_localpath_for_reference_photo(gchar* file_uri)
+    \brief  Changes uri of reference photo to local path
+
+*/
 int change_uri_to_localpath_for_reference_photo(gchar* file_uri) {
     // Get the file URI
 
@@ -102,11 +172,18 @@ int change_uri_to_localpath_for_reference_photo(gchar* file_uri) {
     return 0;
 }
 
+/*! \fn     static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
+    \brief  Writes the response sent by api to a file
+*/
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 {
     size_t written = fwrite(ptr, size, nmemb, (FILE*)stream);
     return written;
 }
+
+/*! \fn     void facetoken_present_image()
+    \brief  Sends request to the api to send back the facetoken for the present image
+*/
 void facetoken_present_image() {
     CURL* curl;
     CURLcode res;
@@ -170,7 +247,7 @@ void facetoken_present_image() {
     //added to check whether CURLOPT_WRITEFUNCTION was working properly
 
 
-    ShellExecute(NULL, "open", "outfileforfacedetails1.txt", NULL, NULL, SW_SHOWNORMAL);
+    /*ShellExecute(NULL, "open", "outfileforfacedetails1.txt", NULL, NULL, SW_SHOWNORMAL);*/
 
     fseek(fp, 0, SEEK_END);
     long file_size = ftell(fp);
@@ -198,6 +275,9 @@ void facetoken_present_image() {
     
     fclose(fp);
 }
+/*! \fn     void facetoken_ref_image()
+    \brief  Sends request to the api to send back the facetoken for the reference image
+*/
 void facetoken_ref_image() {
     CURL* curl;
     CURLcode res;
@@ -288,6 +368,9 @@ void facetoken_ref_image() {
     free(buffer);
     fclose(fp);
 }
+/*! \fn     float attendance()
+    \brief  Sends request to the api to compare the photos and send back the confidence rate which determines by how much the faces match with each other
+*/
 float attendance()
 {
     facetoken_ref_image();
@@ -394,6 +477,10 @@ float attendance()
     return confidence;
 }
 
+
+/*! \fn     void remove_present_photo()
+    \brief  Removes present photo and allows enter to enter a new present photo where present photo is the photo of the student at that instant
+*/
 void remove_present_photo() {
     GtkTreeModel* model;
     GtkTreeIter iter;
@@ -406,6 +493,10 @@ void remove_present_photo() {
 
 }
 
+/*! \fn     void remove_reference_photo()
+    \brief  Removes reference photo and allows enter to enter a new present photo where reference photo is the photo that is already taken during registration period
+*/
+
 void remove_referernce_photo() {
     GtkTreeModel* model;
     GtkTreeIter iter;
@@ -416,6 +507,10 @@ void remove_referernce_photo() {
     student.toggle1 = false;
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_ROLL_NO, student.roll_no, COL_TOGGLE1, student.toggle1, COL_TOGGLE2, student.toggle2, COL_DAYS_PRESENT, student.days_present, COL_CLASS_DAYS, student.class_days, -1);
 }
+
+/*! \fn     void remove_both_photos()
+    \brief  Removes both present and reference photos so that user can begin fresh
+*/
     
 void remove_both_photos() {
     GtkTreeModel* model;
@@ -429,9 +524,11 @@ void remove_both_photos() {
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_ROLL_NO, student.roll_no, COL_TOGGLE1, student.toggle1, COL_TOGGLE2, student.toggle2, COL_DAYS_PRESENT, student.days_present, COL_CLASS_DAYS, student.class_days, -1);
 }
 
-void
-on_response_for_present_photo(GtkNativeDialog* native,
-    int              response)
+
+/*! \fn     void on_response_for_present_photo(GtkNativeDialog* native, int response)
+    \brief  Takes present photo as input an call float attendance() to carry out attendance
+*/
+void on_response_for_present_photo(GtkNativeDialog* native, int response)
 {
     GtkTreeModel* model;
     GtkTreeIter iter;
@@ -496,9 +593,11 @@ on_response_for_present_photo(GtkNativeDialog* native,
     }
    
 }
-void
-on_response_for_reference_photo(GtkNativeDialog* native,
-    int              response)
+
+/*! \fn     void on_response_for_reference_photo(GtkNativeDialog* native, int response)
+    \brief  Takes reference photo as input.
+*/
+void on_response_for_reference_photo(GtkNativeDialog* native, int response)
 {
     GtkTreeModel* model;
     GtkTreeIter iter;
@@ -542,10 +641,10 @@ on_response_for_reference_photo(GtkNativeDialog* native,
         message_sent_to_print("Reference Photo already added");
     }
 }
-
- void
-on_response_for_reference_photo_all_at_once(GtkNativeDialog* native,
-    int              response)
+/*! \fn     void on_response_for_reference_photo_all_at_once(GtkNativeDialog* native, int response)
+    \brief  Takes all reference photos at once.
+*/
+ void on_response_for_reference_photo_all_at_once(GtkNativeDialog* native, int response)
 {
      
      gint length;
@@ -625,12 +724,19 @@ on_response_for_reference_photo_all_at_once(GtkNativeDialog* native,
 
 
 // Compare function to sort student data by name
+/*! \fn     int compare_students(const void* a, const void* b)
+    \brief  Sorts names in response to qsort.
+*/
 int compare_students(const void* a, const void* b) {
     const StudentData* sa = (const StudentData*)a;
     const StudentData* sb = (const StudentData*)b;
     return strcmp(sa->name, sb->name);
 }
 
+
+/*! \fn    static void action_clbk_for_present_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
+    \brief Opens file chooser dialog for taking present photo
+*/
 // Callback function for "Add Photo" menu
 static void action_clbk_for_present_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
 {
@@ -650,6 +756,9 @@ static void action_clbk_for_present_photo(GSimpleAction* simple_action, G_GNUC_U
     g_print("The action %s was clicked.\n", g_action_get_name(G_ACTION(simple_action)));
 }
 
+/*! \fn    static void action_clbk_for_reference_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
+    \brief Opens file chooser dialog for taking reference photo
+*/
 static void action_clbk_for_reference_photo(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
 {
     //for Opening File Chooser Dialog
@@ -665,6 +774,9 @@ static void action_clbk_for_reference_photo(GSimpleAction* simple_action, G_GNUC
    
 }
 
+/*! \fn    void action_clbk_for_reference_photo_all_at_once(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data)
+    \brief Opens file chooser dialog for taking reference photos all at once
+*/
 
 void action_clbk_for_reference_photo_all_at_once(GSimpleAction* simple_action, G_GNUC_UNUSED GVariant* parameter, gpointer* data) {
     //for Opening File Chooser Dialog
@@ -679,6 +791,12 @@ void action_clbk_for_reference_photo_all_at_once(GSimpleAction* simple_action, G
     gtk_native_dialog_show(GTK_NATIVE_DIALOG(native));
 
 }
+
+
+/*! \fn    char* sort_names_and_send_to_db(char* filepath_for_txt_containing_name,char* email,char* classname, int number_of_students)
+    \brief Sort the names from the txt file entered by user and send to the database
+*/
+
 char* sort_names_and_send_to_db(char* filepath_for_txt_containing_name,char* email,char* classname, int number_of_students) {
    
     FILE* file = fopen(filepath_for_txt_containing_name, "r");
@@ -735,6 +853,11 @@ char* sort_names_and_send_to_db(char* filepath_for_txt_containing_name,char* ema
     return return_response;
     json_decref(root);
 }
+
+
+/*! \fn   void activate_attendance_window_for_taking_attendance_demo(char* email)
+    \brief Activates demo classroom when user clicks demo classroom button
+*/
 
 
 void activate_attendance_window_for_taking_attendance_demo(char* email)
@@ -869,6 +992,10 @@ void activate_attendance_window_for_taking_attendance_demo(char* email)
     gtk_widget_show(window5);
   
 }
+
+/*! \fn   void update_db_with_updated_data()
+    \brief Updates the database when the user clicks save button
+*/
 void update_db_with_updated_data() {
     GtkTreeModel* model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
     GtkTreeIter iter;
@@ -903,6 +1030,9 @@ void update_db_with_updated_data() {
     json_decref(root);
 }
 
+/*! \fn   void increase_class_day_by_1()
+    \brief Increases class days by 1 where class days is the number of days the class was conducted
+*/
 void increase_class_day_by_1() {
 
 
@@ -921,6 +1051,9 @@ void increase_class_day_by_1() {
     } while (gtk_tree_model_iter_next(model, &iter));
 }
 
+/*! \fn   void decrease_class_day_by_1()
+    \brief decreases class days by 1
+*/
 void decrease_class_day_by_1() {
    
     GtkTreeModel* model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
@@ -938,7 +1071,9 @@ void decrease_class_day_by_1() {
         gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_ROLL_NO, student.roll_no, COL_TOGGLE1, student.toggle1, COL_TOGGLE2, student.toggle2, COL_DAYS_PRESENT, student.days_present, COL_CLASS_DAYS, student.class_days, -1);
     } while (gtk_tree_model_iter_next(model, &iter));
 }
-
+/*! \fn   int* make_all_values_minus_one()
+    \brief Makes all the values of the values[i] equal to -1
+*/
 int* make_all_values_minus_one() {
     int* values = (int*)malloc(number_of_students * sizeof(int));
     for (int i = 0; i < number_of_students; i++) {
@@ -946,6 +1081,10 @@ int* make_all_values_minus_one() {
     }
     return values;
  }
+
+/*! \fn   void activate_attendance_window_for_taking_attendance(char* email,char** unique_id, char* classname, int number_of_classroom_created_by_user)
+    \brief Activates the specific classroom as the resposne provided by the user.
+*/
 void activate_attendance_window_for_taking_attendance(char* email,char** unique_id, char* classname, int number_of_classroom_created_by_user)
 {
     message_sent_to_print("              Important!\
@@ -1173,3 +1312,5 @@ void activate_attendance_window_for_taking_attendance(char* email,char** unique_
     g_object_unref(store);
     gtk_widget_show(window5);
 }
+
+/** @} */

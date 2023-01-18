@@ -1,12 +1,36 @@
+/* ========================================================================= */
+/**
+ * @file SIGNUP_NORMAL.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup SIGNUP_NORMAL SIGNUP_NORMAL.c
+ * This file contains featues that allows the new user to sign up
+ * @{
+ */
+
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+
+//standard c library headers
 #include<stdio.h>
 #include<curl/curl.h>
 #include<gtk-4.0/gtk/gtk.h>
+#include<jansson.h>
+
+//custom headers created by user
 #include"SIGNUP_Normal.h"
 #include"gtk_c_gui.h"
-#include<jansson.h>
 #include "ErrorMessages.h"
 
 
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 //fucntion declarations
 int signup_normal();
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream);
@@ -14,6 +38,9 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream);
 
 
 
+/*! \fn     static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
+    \brief  Writes the response sent by api to a file
+*/
 
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 {
@@ -23,6 +50,9 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 
 
 
+/*! \fn    int signup_normal()
+    \brief  Only signs up the new user if the email is valid
+*/
 
 int signup_normal()
 {
@@ -159,3 +189,6 @@ int signup_normal()
         invalid_email_id();
     }
 }
+
+
+/** @} */

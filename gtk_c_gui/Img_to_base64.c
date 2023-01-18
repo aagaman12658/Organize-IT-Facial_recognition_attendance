@@ -1,9 +1,26 @@
+/* ========================================================================= */
+/**
+ * @file Img_to_base64.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroupImg_to_base64 Img_to_base64.c
+ * This file contains function that converts image to base64 format and base4 format back to jpg, will be used for saving images to database <<<<<<<<<<<<<<<<<<-------------(under construction)-------------------------->>>>>>>>>>>>>>>>>>>
+ * @{
+ */
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+// custom header created by user
 #include "img_to_base64.h" 
 
 
@@ -13,7 +30,10 @@
 
 
 
-//convert base64 format back to image
+//converts base64 format back to image
+/*! \fn     int convert_back_to_jpg(char* base64)
+    \brief  Converts base64 format back to image
+*/
 int convert_back_to_jpg(char* base64) {
     char* in_buf = (char*)malloc(strlen(base64) + 1);
     strcpy(in_buf, base64);
@@ -48,6 +68,9 @@ int convert_back_to_jpg(char* base64) {
 
 
 //converts image to base_64 format
+/*! \fn     char* encode_to_base_64(char* uri, char* base64_data)
+    \brief  Encodes image to base64 format for saving in database in json
+*/
 char* encode_to_base_64(char* uri, char* base64_data) {
     // Open input file
     FILE* in_file = fopen(uri, "rb");
@@ -82,3 +105,5 @@ char* encode_to_base_64(char* uri, char* base64_data) {
     BIO_free_all(bio_mem);
     return base64_data;
 }
+
+/** @} */

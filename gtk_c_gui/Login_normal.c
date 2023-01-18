@@ -1,14 +1,38 @@
+/* ========================================================================= */
+/**
+ * @file Login_normal.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup Login_normal Login_normal.c
+ * This file contains featues that allows users to login using email and password
+ * @{
+ */
+
+
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+//library headers
 #include<stdio.h>
 #include<curl/curl.h>
+#include<jansson.h>
+
+//custom headers created by user
 #include"LOGIN_NORMAL.h"
 #include"gtk-4.0/gtk/gtk.h"
 #include"gtk_c_gui.h"
-#include<jansson.h>
 #include"gtk_dashboard_gui.h"
 #include"ErrorMessages.h"
 
 
 
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 
 
 //function prototypes
@@ -16,17 +40,26 @@ int login_normal();
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream);
 
 
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
 //global variables not to be changed
 gchar* name;
 
 
 //returns displayName()
+/*! \fn   char* return_displayName()
+    \brief returns display name to the function trying to access the display name
+*/
 char* return_displayName() {
     printf("\n\n\n\n\n\ndisplay name from return function (iam here)= %s\n\n\n\n\n\n\n", name);
     return name;
 }
 
 //writes the response sent by api to a file
+/*! \fn     static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
+    \brief  Writes the response sent by api to a file
+*/
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 {
     size_t written = fwrite(ptr, size, nmemb, (FILE*)stream);
@@ -36,7 +69,11 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 
 
 
-//logs in the user in the database
+//logs in the user that is present in the database only if the password matches
+
+/*! \fn   int login_normal()
+    \brief logs in the user that is present in the database only if the password matches
+*/
 int login_normal()
 {
    
@@ -161,5 +198,5 @@ int login_normal()
     return 0;
 }
 
-
+/** @} */
 

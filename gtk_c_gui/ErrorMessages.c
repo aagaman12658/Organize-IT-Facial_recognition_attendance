@@ -1,10 +1,34 @@
+/* ========================================================================= */
+/**
+ * @file ErrorMessages.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+/** @defgroup ErrorMessages ErrorMessages.c
+ * This file contains featues that allows the new user to sign up
+ * @{
+ */
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
+
+//c library headers
 #include<gtk-4.0/gtk/gtk.h>
 #include<curl/curl.h>
 #include<stdio.h>
+
+//custom headers created by user
 #include "gtk_c_gui.h"
 #include "ErrorMessages.h"
 #include "attendance_window_public.h"
 
+
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 
 //function prototypes
 void passwords_do_not_match();
@@ -20,6 +44,9 @@ void message_sent_to_print(char* message);
 
 
 //displays passwords do not match prompt
+/*! \fn     void passwords_do_not_match()
+    \brief  Displays passwords do not match prompt
+*/
 void passwords_do_not_match() {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -66,6 +93,9 @@ void passwords_do_not_match() {
 
 
 //displays signup_successful message
+/*! \fn     void signup_successful()
+    \brief  Displays signup_successful message
+*/
 void signup_successful() {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -111,6 +141,9 @@ void signup_successful() {
 }
 
 //displays invalid email id prompt
+/*! \fn     void invalid_email_id()
+    \brief  Displays invalid email id prompt
+*/
 void invalid_email_id() {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -156,6 +189,9 @@ void invalid_email_id() {
 }
 
 //displays any message sent by api 
+/*! \fn    void error_message_sent_by_api(char* message)
+    \brief  Displays any message sent by api 
+*/
 void error_message_sent_by_api(char* message) {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -201,6 +237,9 @@ void error_message_sent_by_api(char* message) {
 }
 
 //displays message sent to print 
+/*! \fn    void message_sent_to_print(char* message) 
+    \brief  Displays any message sent to print 
+*/
 void message_sent_to_print(char* message) {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -242,3 +281,5 @@ void message_sent_to_print(char* message) {
 
     gtk_widget_show(window2);
 }
+
+/** @} */

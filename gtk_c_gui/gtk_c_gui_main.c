@@ -1,15 +1,39 @@
+/* ========================================================================= */
+/**
+ * @file gtk_c_gui_main.c
+ * @author Organize-IT!
+ * @date 2023
+ */
+ /* ========================================================================= */
+
+ /** @defgroup gtk_c_gui gtk_c_gui_main.c
+  * This is the initial window where users will be able to login and signup.
+  * Main file of the project.\n
+  * @{
+  */
+
+/* ========================================================================= */
+/* Include files section                                                     */
+/* ========================================================================= */
 #include<stdio.h>
 #include<gtk-4.0/gtk/gtk.h>
 #include<glib/gstdio.h>
+#include<curl/curl.h>
+#include<Windows.h>
+#include <jansson.h>
+
+//user defined headers
 #include"loginwithgoogle.h"
 #include"SIGNUP_Normal.h"
 #include"LOGIN_NORMAL.h"
 #include"gtk_c_gui.h"
-#include<curl/curl.h>
-#include<Windows.h>
 #include"gtk_dashboard_gui.h"
 #include "ErrorMessages.h"
-#include <jansson.h>
+
+
+/* ========================================================================= */
+/* Fucntion prototypes section                                               */
+/* ========================================================================= */
 
 //*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 //function declarations/function prototypes
@@ -35,6 +59,10 @@ char* return_text();
 int return_valueresult();
 void under_development();
 int check_email_validity();
+
+/* ========================================================================= */
+/* Global variables section                                                  */
+/* ========================================================================= */
 
 //*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 //global variable and not to be changed manually
@@ -62,6 +90,10 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream)
 }
 
 //clears entry of the initial window  once the user is logged-in
+/*! \fn     void clear_entry()
+    \brief  clears entry of the initial window  once the user is logged-in
+
+*/
 void clear_entry() {
     gtk_editable_set_text(GTK_EDITABLE(entry), "");
     gtk_entry_set_placeholder_text(GTK_ENTRY(entry), "Enter email address or phone number");
@@ -72,6 +104,10 @@ void clear_entry() {
 
 
 //clears entry of the sign-up window once a new user is signed-up
+/*! \fn     void clear_entry_for_signupWindow()
+    \brief  clears entry of the sign-up window once a new user is signed-up
+
+*/
 void clear_entry_for_signupWindow() {
     gtk_editable_set_text(GTK_EDITABLE(entry_1), "");
     gtk_entry_set_placeholder_text(GTK_ENTRY(entry_1), "Enter email address or phone number");
@@ -86,6 +122,11 @@ void clear_entry_for_signupWindow() {
 
 
 //checks for the validity of email using "abstract" api
+/*! \fn     int check_email_validity()
+    \brief  checks for the validity of email using "abstract" api
+
+*/
+
 int check_email_validity() {
     CURL* curl;
     CURLcode res;
@@ -147,6 +188,10 @@ int check_email_validity() {
 
 }
 // displays invalid input message when the user enters any invalid data 
+/*! \fn     void invalid_input()
+    \brief  displays invalid input message when the user enters any invalid data 
+
+*/
 void invalid_input() {
     MessageBeep(MB_OK);
     GtkWidget* window2;
@@ -246,6 +291,10 @@ void call_to_signup_normal() {
 }
 
 //creates a signup query window where user is prompted to enter name, email, password, and comfirm the password
+/*! \fn     void signup_normal_window()
+    \brief  creates a signup query window where user is prompted to enter name, email, password, and comfirm the password
+
+*/
 void signup_normal_window() {
     GtkWidget* signup_window;
     GtkWidget * entry_4;
@@ -408,6 +457,11 @@ static void activate_entry_for_name(){
 //}
 
 //sets apperance properties for the text labels present in buttons
+
+/*! \fn     int css_for_buttons(GtkWidget* button)
+    \brief  sets apperance properties for the text labels present in buttons
+
+*/
 int css_for_buttons(GtkWidget* button) {
     PangoFontDescription* font_desc;
     GdkRGBA rgba;
@@ -433,6 +487,11 @@ int css_for_buttons(GtkWidget* button) {
 }
 
 //sets apperance properties for the text labels present in window
+
+/*! \fn     int css_for_label(GtkWidget* label
+    \brief  sets apperance properties for the text labels present in window
+
+*/
 int css_for_label(GtkWidget* label) {
     PangoFontDescription* font_desc;
     GdkRGBA rgba;
@@ -458,6 +517,10 @@ int css_for_label(GtkWidget* label) {
 }
 
 //sets appearance properties for the text labels present in titlebar  and sets appearance properties for window
+/*! \fn     int css_for_window(GtkWidget* window)
+    \brief  sets appearance properties for the text labels present in titlebar  and sets appearance properties for window
+
+*/
 int css_for_window(GtkWidget* window)
 {
     PangoFontDescription* font_desc;
@@ -484,6 +547,12 @@ int css_for_window(GtkWidget* window)
 
 
 //login window(this window creates the basic appearance and functionlaities of appearance window
+/*! \fn     static void activate(GtkApplication* app, gpointer        user_data)
+    \brief  Creates initial login window.
+    \param  window -> first window of the application.
+    \param  grid -> adds it's child widgets to the window
+    \param gtk_widget_show(window) -> shows the window after adding all the widgets
+*/
 static void
 activate(GtkApplication* app,
     gpointer        user_data)
@@ -709,3 +778,5 @@ main(int    argc,
 
     return status;
 }
+
+/** @} */

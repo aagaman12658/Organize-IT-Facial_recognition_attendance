@@ -1,157 +1,43 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gtk_c_gui.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  attendance_window_public.c
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(70,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(91,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(205,30): warning C4101: 'total_time': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(205,16): warning C4101: 'speed_upload': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(380,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(381,11): warning C4090: 'initializing': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(300,30): warning C4101: 'total_time': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(300,16): warning C4101: 'speed_upload': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(587,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(571,19): warning C4101: 'base64_data': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(746,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(749,22): warning C4101: 'context': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(745,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(748,21): warning C4101: 'provider': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(750,16): warning C4101: 'button': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(747,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(959,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(962,22): warning C4101: 'context': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(958,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(961,21): warning C4101: 'provider': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(963,16): warning C4101: 'button': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\attendance_window_public.c(960,17): warning C4101: 'tag': unreferenced local variable
   ErrorMessages.c
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(41,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(60,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(60,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(29,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(28,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(30,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(87,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(106,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(106,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(75,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(74,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(76,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(132,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(151,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(151,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(120,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(119,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(121,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(177,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(196,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(196,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(165,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(164,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(166,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(222,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(210,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(209,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(211,17): warning C4101: 'tag': unreferenced local variable
-  gtk_c_gui_main.c
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(142,69): warning C4090: '=': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(168,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(201,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(201,48): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(156,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(155,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(157,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(259,47): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(259,54): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(260,39): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(413,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(412,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(414,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(438,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(437,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(439,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(464,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(463,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(465,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(497,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(495,24): warning C4101: 'end': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(496,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(495,17): warning C4101: 'start': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(494,28): warning C4101: 'buffer2': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(498,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_c_gui_main.c(494,21): warning C4101: 'buffer': unreferenced local variable
-  gtk_dashboard_gui.c
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(95,12): warning C4129: ' ': unrecognized character escape sequence
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(104,109): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char **'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(104,94): warning C4024: 'json_string': different types for formal and actual parameter 1
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(124,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(141,11): warning C4090: 'initializing': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(192,37): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(211,45): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(211,54): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(222,110): warning C4047: '=': 'char **' differs in levels of indirection from 'char *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(226,35): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(178,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(177,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(179,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(260,63): warning C4133: '=': incompatible types - from 'GFile *' to 'FILE *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(261,63): warning C4133: 'function': incompatible types - from 'FILE *' to 'GFile *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(262,60): warning C4133: 'function': incompatible types - from 'FILE *' to 'GFile *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(316,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(316,50): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(317,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(317,41): warning C4047: 'function': 'gboolean' differs in levels of indirection from 'GtkWidget *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(317,34): warning C4024: 'gtk_window_set_modal': different types for formal and actual parameter 2
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(306,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(305,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(307,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(644,31): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(540,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(539,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(544,16): warning C4101: 'button': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\gtk_dashboard_gui.c(541,17): warning C4101: 'tag': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(68,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(87,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(87,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(56,13): warning C4101: 'rgba': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(55,27): warning C4101: 'font_desc': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(57,17): warning C4101: 'tag': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(117,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(136,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(136,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(105,13): warning C4101: 'rgba': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(104,27): warning C4101: 'font_desc': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(106,17): warning C4101: 'tag': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(165,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(184,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(184,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(153,13): warning C4101: 'rgba': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(152,27): warning C4101: 'font_desc': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(154,17): warning C4101: 'tag': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(213,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(232,41): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(232,49): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(201,13): warning C4101: 'rgba': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(200,27): warning C4101: 'font_desc': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(202,17): warning C4101: 'tag': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(261,33): warning C4133: 'function': incompatible types - from 'GtkWidget *' to 'GtkWindow *'
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(249,13): warning C4101: 'rgba': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(248,27): warning C4101: 'font_desc': unreferenced local variable
+D:\Organize-IT!\gtk_c_gui\ErrorMessages.c(250,17): warning C4101: 'tag': unreferenced local variable
   Img_to_base64.c
-D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(28,45): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(56,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(67,22): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(48,45): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(79,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
+D:\Organize-IT!\gtk_c_gui\Img_to_base64.c(90,22): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Login_normal.c
-D:\Organize-IT!\gtk_c_gui\Login_normal.c(124,67): warning C4090: '=': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\Login_normal.c(136,41): warning C4090: 'function': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\Login_normal.c(140,42): warning C4090: 'function': different 'const' qualifiers
-  post__basic_file_to_database.c
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(124,17): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(174,17): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(180,17): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(190,42): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(191,21): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(260,38): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(333,29): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(399,30): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(505,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(555,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(561,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(572,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(577,11): warning C4090: 'initializing': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(636,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(645,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(690,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(696,17): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(705,11): warning C4090: 'initializing': different 'const' qualifiers
+D:\Organize-IT!\gtk_c_gui\Login_normal.c(161,67): warning C4090: '=': different 'const' qualifiers
+D:\Organize-IT!\gtk_c_gui\Login_normal.c(173,41): warning C4090: 'function': different 'const' qualifiers
+D:\Organize-IT!\gtk_c_gui\Login_normal.c(177,42): warning C4090: 'function': different 'const' qualifiers
   SIGNUP _Normal.c
-D:\Organize-IT!\gtk_c_gui\SIGNUP _Normal.c(137,46): warning C4090: 'function': different 'const' qualifiers
-  loginwithgoogle.c
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(62,5): warning C4013: 'start_login' undefined; assuming extern returning int
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(29,13): warning C4101: 'rgba': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(28,27): warning C4101: 'font_desc': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(30,17): warning C4101: 'tag': unreferenced local variable
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(140,12): warning C4477: 'printf' : format string '%i' requires an argument of type 'int', but variadic argument 1 has type 'const char *'
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(140,12): warning C4313: 'printf': '%i' in format string conflicts with argument 1 of type 'const char *'
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(138,11): warning C4090: 'initializing': different 'const' qualifiers
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(139,17): warning C4047: 'initializing': 'const char *' differs in levels of indirection from 'int'
-D:\Organize-IT!\gtk_c_gui\loginwithgoogle.c(220,38): warning C4090: 'function': different 'const' qualifiers
+D:\Organize-IT!\gtk_c_gui\SIGNUP _Normal.c(167,46): warning C4090: 'function': different 'const' qualifiers
   Generating Code...
-D:\Organize-IT!\gtk_c_gui\SIGNUP _Normal.c(161): warning C4715: 'signup_normal': not all control paths return a value
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(269): warning C4715: 'get_number_of_studetns_in_classroom_selected': not all control paths return a value
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(410): warning C4715: 'get_class_days_from_each_classroom': not all control paths return a value
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(496): warning C4715: 'get_names_present_in_resource_json_in_database': not all control paths return a value
-D:\Organize-IT!\gtk_c_gui\post__basic_file_to_database.c(349): warning C4715: 'get_present_days_for_each_classroom': not all control paths return a value
-  post_basic_file_to_database.h
+D:\Organize-IT!\gtk_c_gui\SIGNUP _Normal.c(191): warning C4715: 'signup_normal': not all control paths return a value
   gtk_c_gui.vcxproj -> D:\Organize-IT!\x64\Debug\gtk_c_gui_experimental.exe
