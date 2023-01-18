@@ -13,6 +13,6 @@ Ashim Nepal (PUL078BCT020)
 Just copy the debug folder inside the x64 folder and paste in a location of your device.
 
 ## Screenshots
-![](images/images/GTK%20Classroom.png
+![](images/images/GTK%20Classroom.png)
 
 
