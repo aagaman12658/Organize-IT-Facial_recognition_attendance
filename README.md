@@ -32,3 +32,4 @@ Attendance window
 
 ## Running the program
 Run gtk_c_gui_experimental.exe present inside x64/Debug folder after copying the debug folder in your device.
+
