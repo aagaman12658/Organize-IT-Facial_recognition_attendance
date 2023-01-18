@@ -6,7 +6,7 @@ This is the Facial Recognition domain covered Organize-It! group of companies.
 
 ## Team members
 
-1. Aagaman Sharma Pokharel (PUL078BCT001)\n
+1. Aagaman Sharma Pokharel (PUL078BCT001)
 2. Ashim Nepal (PUL078BCT020)
 
 
