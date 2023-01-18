@@ -15,7 +15,7 @@ Ashim Nepal (PUL078BCT020)
 Just copy the debug folder inside the x64 folder and paste in a location of your device.
 
 ## Screenshots
-
+![](images/image1.jpg)
 
 
 ## Running the program
