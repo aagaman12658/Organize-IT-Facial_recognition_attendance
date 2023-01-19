@@ -40,6 +40,9 @@ Attendance window
 2. Firebase Rest APIs for authentication and storing data in real-time database
 3. Abstract API for checking the validity of email when user tries to sign up for the first time.
 
+## Documentations
+1. [Documentation by Doxygen](https://github.com/aagaman12658/Organize-IT-Facial_recognition_attendance/blob/master/Report/Organize-IT%5BDoxygen-Documentation%5D.pdf)
+2. [IEEE Format Documentation](https://github.com/aagaman12658/Organize-IT-Facial_recognition_attendance/blob/master/Report/Organize-IT_documentation_IEEE_Format.docx)
 ## Running the program
 Run gtk_c_gui_experimental.exe present inside x64/Debug folder after copying the debug folder in your device.
 
