@@ -1,6 +1,6 @@
 # Organize-IT-Facial_recognition_attendance
 
--> Organize-IT!-v0.1
+-> Organize-IT!-v0.1 \n
 -> This is the Facial Recognition domain covered Organize-It! group of companies.
 
 
