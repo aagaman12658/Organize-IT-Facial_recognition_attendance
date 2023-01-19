@@ -33,7 +33,7 @@ Attendance window
 1. GTK4 Library for GUI
 2. CURL Library for Interacting With APIs
 3. Jansson Library for Parsing Json
-4. Open SSL Library for converting image to base64 format and base64 format back to image(<<<<------(under construction)--------->>>>)
+4. Open SSL Library for converting image to base64 format and base64 format back to image(<<<<------(under construction)--------->>>>), This feature will be available in next version of Organize-IT!
 
 ## APIs Used
 1. Face++ API for facial recognition
